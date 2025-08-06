@@ -3,20 +3,24 @@ import "./App.css";
 import HeaderComponent from "./components/HeaderComponent.jsx";
 import FooterComponent from "./components/FooterComponent.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreateEmployee from "./components/CreateEmployee.jsx";
+import EmpCompo from "./components/EmployeeComponent.jsx";
 function App() {
   return (
-    <div>
+    <div className="app-wrapper">
       <BrowserRouter>
         <HeaderComponent />
-        <Routes>
-          <Route path="/" element={<ListEmpCo />}></Route>
-          <Route path="/employee" element={<ListEmpCo />}></Route>
-          <Route path="/add-employee" element={<CreateEmployee />}></Route>
-        </Routes>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<ListEmpCo />} />
+            <Route path="/employee" element={<ListEmpCo />} />
+            <Route path="/add-employee" element={<EmpCompo />} />
+            <Route path="/edit-employee/:id" element={<EmpCompo />} />
+          </Routes>
+        </main>
         <FooterComponent />
       </BrowserRouter>
     </div>
   );
 }
+
 export default App;

@@ -1,29 +1,59 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createEmployee } from "../service/EmployeeService";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  createEmployee,
+  getEmployee,
+  updateEmployee,
+} from "../service/EmployeeService";
 
-const CreateEmployee = () => {
+const EmployeeComponent = () => {
   const navigator = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-
+  const { id } = useParams();
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
     email: "",
   });
 
-  function saveEmployee(e) {
+  function saveOrUpdateEmployee(e) {
     e.preventDefault();
+    const employee = { firstName, lastName, email };
+    console.log(employee);
     if (validateForm()) {
-      const employee = { firstName, lastName, email };
-      createEmployee(employee).then((Response) => {
-        console.log(Response.data);
-        navigator("/employee");
-      });
+      if (id) {
+        updateEmployee(id, employee)
+          .then((Response) => {
+            console.log(Response.data);
+            navigator("/employee");
+          })
+          .catch((e) => console.log(e));
+      } else {
+        createEmployee(employee)
+          .then((Response) => {
+            console.log(Response.data);
+            navigator("/employee");
+          })
+          .catch((e) => console.log(e));
+      }
     }
   }
+
+  useEffect(() => {
+    if (id) {
+      getEmployee(id)
+        .then((Response) => {
+          setFirstName(Response.data.firstName);
+          setLastName(Response.data.lastName);
+          setEmail(Response.data.email);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  }, [id]);
 
   function validateForm() {
     let valid = true;
@@ -50,11 +80,20 @@ const CreateEmployee = () => {
     setError(errorCopy);
     return valid;
   }
+
+  function pageTitle() {
+    if (id) {
+      return <h2 className="text-center">Update Employee</h2>;
+    } else {
+      return <h2 className="text-center">Add Employee</h2>;
+    }
+  }
+
   return (
     <div className="container mt-5 p-2 d-flex flex-column ">
       <div className="row justify-content-center">
         <div className="card p-4 w-50">
-          <h2 className="text-center">Add Employee</h2>
+          {pageTitle()}
           <div className="card-body">
             <form>
               <div className="form-group mb-2">
@@ -111,7 +150,10 @@ const CreateEmployee = () => {
               >
                 Home
               </button>
-              <button className="btn btn-success w-50" onClick={saveEmployee}>
+              <button
+                className="btn btn-success w-50"
+                onClick={saveOrUpdateEmployee}
+              >
                 Save Employee
               </button>
             </div>
@@ -122,4 +164,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default EmployeeComponent;
