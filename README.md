@@ -11,13 +11,6 @@ This is a full-stack **Employee Management System** built using:
 
 ---
 
-## 🌐 Live Demo
-
-- 🔗 Frontend: [https://vermillion-druid-a49153.netlify.app](https://vermillion-druid-a49153.netlify.app)
-- 🔗 Backend API: [https://employeemanagement-backend-cvwx.onrender.com/employee](https://employeemanagement-backend-cvwx.onrender.com/employee)
-
----
-
 ## 📸 Features
 
 - ✅ Add a new employee
