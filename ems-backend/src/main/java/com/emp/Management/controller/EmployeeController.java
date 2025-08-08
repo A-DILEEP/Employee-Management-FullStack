@@ -16,10 +16,12 @@ import com.emp.Management.dto.EmployeeDto;
 
 import com.emp.Management.service.EmployeeService;
 
-@CrossOrigin(origins="http://localhost:3000")
+
+@CrossOrigin(origins="${FRONTEND_URL}")
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+	
 	private EmployeeService employeeService;
 
 	public EmployeeController(EmployeeService employeeService ) {
