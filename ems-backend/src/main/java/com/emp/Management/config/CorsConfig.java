@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class CorsConfig {
+	@Value("${frontend.url}")
 
-    @Value("${frontend.url}")
     private String frontendUrl;
 
     @Bean

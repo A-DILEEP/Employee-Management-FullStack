@@ -16,8 +16,6 @@ import com.emp.Management.dto.EmployeeDto;
 
 import com.emp.Management.service.EmployeeService;
 
-
-@CrossOrigin(origins="${FRONTEND_URL}")
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
