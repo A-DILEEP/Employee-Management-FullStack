@@ -31,7 +31,7 @@ This is a full-stack **Employee Management System** built using:
 │ ├── dto/<br>
 │ ├── entity/<br>
 │ └── repository/<br>
-│
+
 ***├── frontend (React + Vite App)***<br>
 │ ├── src/<br>
 │ │ ├── components/<br>
