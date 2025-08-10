@@ -1,0 +1,24 @@
+.header {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  position: sticky;
+  width: 100%;
+  top: 0;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 18px;
+  }
+}

@@ -1,13 +1,14 @@
 import React from "react";
+import "./Footer.css";
 
 const FooterComponent = () => {
   return (
-    <footer className="footer bg-black text-white text-center py-3">
-      <span className="link">
+    <footer className="footer">
+      <span>
         Made with ❤️ on{" "}
         <a
           href="https://github.com/A-DILEEP"
-          className="text-white text-decoration-none"
+          className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
         >

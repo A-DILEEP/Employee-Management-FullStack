@@ -1,9 +1,9 @@
-import ListEmpCo from "./components/ListEmployeeComponent.jsx";
+import ListEmpCo from "./components/ListEmployee/ListEmployeeComponent.jsx";
 import "./App.css";
-import HeaderComponent from "./components/HeaderComponent.jsx";
-import FooterComponent from "./components/FooterComponent.jsx";
+import HeaderComponent from "./components/Header/HeaderComponent.jsx";
+import FooterComponent from "./components/Footer/FooterComponent.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import EmpCompo from "./components/EmployeeComponent.jsx";
+import EmpCompo from "./components/Employee/EmployeeComponent.jsx";
 function App() {
   return (
     <div className="app-wrapper">

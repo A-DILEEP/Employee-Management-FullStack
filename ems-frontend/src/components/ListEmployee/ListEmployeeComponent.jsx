@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { deleteEmployee, listEmployees } from "../service/EmployeeService";
+import { deleteEmployee, listEmployees } from "../../service/EmployeeService";
 import { useNavigate } from "react-router-dom";
+import "./ListEmployee.css";
+
 function ListEmployeeComponent() {
   const [employee, setEmployee] = useState([]);
   const navigator = useNavigate();
+
   useEffect(() => {
     listEmployees()
       .then((Response) => {
@@ -30,20 +33,21 @@ function ListEmployeeComponent() {
       })
       .catch((e) => console.log(e));
   }
+
   return (
     <div className="container">
-      <h2 className="text-center mt-5">List of Employees</h2>
-      <button className="btn btn-primary mb-2 mt-5" onClick={addNewEmployee}>
+      <h2 className="title">List of Employees</h2>
+      <button className="btn primary" onClick={addNewEmployee}>
         Add Employee
       </button>
       <div>
-        <table className="table table-striped table-bordered">
-          <thead className="thead-dark">
+        <table className="employee-table">
+          <thead>
             <tr>
-              <th>Employee id</th>
-              <th>Employee FirstName</th>
-              <th>Employee LastName</th>
-              <th>Employee Email</th>
+              <th>Employee ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -56,14 +60,13 @@ function ListEmployeeComponent() {
                 <td>{employee.email}</td>
                 <td>
                   <button
-                    className="btn btn-info"
+                    className="btn info"
                     onClick={() => updateEmp(employee.id)}
                   >
                     Update
                   </button>
                   <button
-                    className="btn btn-danger"
-                    style={{ marginLeft: "10px" }}
+                    className="btn danger"
                     onClick={() => deleteEmp(employee.id)}
                   >
                     Delete
