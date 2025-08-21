@@ -1,8 +1,8 @@
-import ListEmpCo from "./components/ListEmployee/ListEmployeeComponent.jsx";
 import "./App.css";
 import HeaderComponent from "./components/Header/HeaderComponent.jsx";
 import FooterComponent from "./components/Footer/FooterComponent.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ListEmpCo from "./components/ListEmployee/ListEmployeeComponent.jsx";
 import EmpCompo from "./components/Employee/EmployeeComponent.jsx";
 function App() {
   return (

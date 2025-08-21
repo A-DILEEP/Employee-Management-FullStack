@@ -10,6 +10,7 @@ function ListEmployeeComponent() {
   useEffect(() => {
     listEmployees()
       .then((Response) => {
+        console.log("API raw response:", Response);
         setEmployee(Response.data);
       })
       .catch((error) => {
