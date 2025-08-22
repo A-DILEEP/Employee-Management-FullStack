@@ -25,6 +25,9 @@ function ListEmployeeComponent() {
   function updateEmp(id) {
     navigator(`/edit-employee/${id}`);
   }
+  function detailInfo(id) {
+    navigator(`/employee/${id}`);
+  }
 
   function deleteEmp(id) {
     deleteEmployee(id)
@@ -60,6 +63,12 @@ function ListEmployeeComponent() {
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
                 <td>
+                  <button
+                    className="btn details"
+                    onClick={() => detailInfo(employee.id)}
+                  >
+                    Details
+                  </button>
                   <button
                     className="btn info"
                     onClick={() => updateEmp(employee.id)}

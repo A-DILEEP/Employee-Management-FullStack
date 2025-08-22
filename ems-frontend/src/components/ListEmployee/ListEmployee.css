@@ -29,6 +29,10 @@
   background-color: #17a2b8;
   color: white;
 }
+.btn.details {
+  background-color: #5cf57d;
+  color: white;
+}
 
 .btn.danger {
   background-color: #dc3545;
