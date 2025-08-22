@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name="employees")
 public class Employee {
@@ -28,6 +30,7 @@ public class Employee {
 	
 	@ManyToOne
 	@JoinColumn(name="department_id")
+	@JsonBackReference   
 	private Department department;
 	
 	@OneToOne(cascade=CascadeType.ALL)
