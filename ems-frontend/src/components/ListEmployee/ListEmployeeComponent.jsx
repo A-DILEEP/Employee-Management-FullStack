@@ -28,7 +28,9 @@ function ListEmployeeComponent() {
   function detailInfo(id) {
     navigator(`/employee/${id}`);
   }
-
+  function addNewDept(){
+    navigator(`/add-department`);
+  }
   function deleteEmp(id) {
     deleteEmployee(id)
       .then(() => {
@@ -43,6 +45,9 @@ function ListEmployeeComponent() {
       <h2 className="title">List of Employees</h2>
       <button className="btn primary" onClick={addNewEmployee}>
         Add Employee
+      </button>
+      <button className="btn primary" onClick={addNewDept}>
+        Add Department
       </button>
       <div>
         <table className="employee-table">
