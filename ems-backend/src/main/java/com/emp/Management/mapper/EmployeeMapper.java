@@ -3,6 +3,7 @@ package com.emp.Management.mapper;
 import com.emp.Management.dto.DepartmentDto;
 import com.emp.Management.dto.EmployeeSummaryDto;
 import com.emp.Management.dto.EmployeeDetailDto;
+import com.emp.Management.entity.Department;
 import com.emp.Management.entity.Employee;
 
 public class EmployeeMapper {
@@ -41,12 +42,21 @@ public class EmployeeMapper {
     public static Employee mapToEmployee(EmployeeDetailDto employeeDto) {
         if (employeeDto == null) return null;
 
+        Department department = null;
+        if (employeeDto.getDepartment() != null && employeeDto.getDepartment().getId() != null) {
+            department = new Department();
+            department.setId(employeeDto.getDepartment().getId()); 
+        }
+
         return new Employee(
-                employeeDto.getId(),
-                employeeDto.getFirstName(),
-                employeeDto.getLastName(),
-                employeeDto.getEmail(),
-                null 
+            employeeDto.getId(),
+            employeeDto.getFirstName(),
+            employeeDto.getLastName(),
+            employeeDto.getEmail(),
+            department
         );
     }
+
+
+
 }

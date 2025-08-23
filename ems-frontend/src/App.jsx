@@ -6,6 +6,7 @@ import ListEmpCo from "./components/ListEmployee/ListEmployeeComponent.jsx";
 import EmpCompo from "./components/Employee/EmployeeComponent.jsx";
 import DetailEmployee from "./components/DetailEmp/DetailEmployee.jsx";
 import { Suspense } from "react";
+import AddDepartmentComponent from "./components/Department/AddDepartmentComponent.jsx";
 function App() {
   return (
     <div className="app-wrapper">
@@ -16,9 +17,13 @@ function App() {
           <Routes>
             <Route path="/" element={<ListEmpCo />} />
             <Route path="/employee" element={<ListEmpCo />} />
-            <Route path="/employee/:id" element={<DetailEmployee/>} />
+            <Route path="/employee/:id" element={<DetailEmployee />} />
             <Route path="/add-employee" element={<EmpCompo />} />
             <Route path="/edit-employee/:id" element={<EmpCompo />} />
+            <Route
+              path="/add-department"
+              element={<AddDepartmentComponent />}
+            />
           </Routes>
           </Suspense>
         </main>

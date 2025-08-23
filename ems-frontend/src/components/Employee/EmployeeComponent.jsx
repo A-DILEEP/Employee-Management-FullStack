@@ -5,24 +5,36 @@ import {
   getEmployee,
   updateEmployee,
 } from "../../service/EmployeeService";
-import "./Employee.css";
+import { getAllDepartments } from "../../service/DepartmentService";
 
+import "./Employee.css";
 
 const EmployeeComponent = () => {
   const navigator = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [departmentId, setDepartmentId] = useState("");
+  const [departments, setDepartments] = useState([]);
   const { id } = useParams();
+
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    departmentId: "",
   });
 
   function saveOrUpdateEmployee(e) {
     e.preventDefault();
-    const employee = { firstName, lastName, email };
+
+    // ✅ send department object (backend expects this format)
+    const employee = {
+      firstName,
+      lastName,
+      email,
+      department: { id: departmentId },
+    };
 
     if (validateForm()) {
       if (id) {
@@ -38,12 +50,17 @@ const EmployeeComponent = () => {
   }
 
   useEffect(() => {
+    getAllDepartments()
+      .then((res) => setDepartments(res.data))
+      .catch((err) => console.log(err));
+
     if (id) {
       getEmployee(id)
-        .then((Response) => {
-          setFirstName(Response.data.firstName);
-          setLastName(Response.data.lastName);
-          setEmail(Response.data.email);
+        .then((res) => {
+          setFirstName(res.data.firstName);
+          setLastName(res.data.lastName);
+          setEmail(res.data.email);
+          setDepartmentId(res.data.department?.id || "");
         })
         .catch((e) => console.log(e));
     }
@@ -56,8 +73,14 @@ const EmployeeComponent = () => {
     errorCopy.firstName = firstName.trim() ? "" : "First Name is Required";
     errorCopy.lastName = lastName.trim() ? "" : "Last Name is Required";
     errorCopy.email = email.trim() ? "" : "Email ID is Required";
+    errorCopy.departmentId = departmentId ? "" : "Department is Required";
 
-    if (!firstName.trim() || !lastName.trim() || !email.trim()) {
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !email.trim() ||
+      !departmentId
+    ) {
       valid = false;
     }
 
@@ -115,6 +138,26 @@ const EmployeeComponent = () => {
             />
             {error.email && (
               <span className="error-message">{error.email}</span>
+            )}
+          </div>
+
+          {/* ✅ Department dropdown */}
+          <div className="form-group">
+            <label>Department:</label>
+            <select
+              value={departmentId}
+              className={error.departmentId ? "input-error" : ""}
+              onChange={(e) => setDepartmentId(e.target.value)}
+            >
+              <option value="">-- Select Department --</option>
+              {departments.map((dept) => (
+                <option key={dept.id} value={dept.id}>
+                  {dept.name}
+                </option>
+              ))}
+            </select>
+            {error.departmentId && (
+              <span className="error-message">{error.departmentId}</span>
             )}
           </div>
         </form>

@@ -11,7 +11,7 @@ import com.emp.Management.dto.EmployeeDetailDto;
 import com.emp.Management.service.EmployeeService;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 public class EmployeeController {
     
     private final EmployeeService employeeService;

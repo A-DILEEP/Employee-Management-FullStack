@@ -9,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Department {
 	@Id
@@ -23,6 +25,7 @@ public class Department {
 	}
 
 	@OneToMany(mappedBy="department")
+	@JsonManagedReference   
 	private List<Employee>employees=new ArrayList<>();
 	
 	public Department(Long id, String name) {
