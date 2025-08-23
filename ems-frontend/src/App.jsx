@@ -5,12 +5,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ListEmpCo from "./components/ListEmployee/ListEmployeeComponent.jsx";
 import EmpCompo from "./components/Employee/EmployeeComponent.jsx";
 import DetailEmployee from "./components/DetailEmp/DetailEmployee.jsx";
+import { Suspense } from "react";
 function App() {
   return (
     <div className="app-wrapper">
       <BrowserRouter>
         <HeaderComponent />
         <main className="flex-grow">
+          <Suspense fallback={<h2>Loading Page...</h2>}>
           <Routes>
             <Route path="/" element={<ListEmpCo />} />
             <Route path="/employee" element={<ListEmpCo />} />
@@ -18,6 +20,7 @@ function App() {
             <Route path="/add-employee" element={<EmpCompo />} />
             <Route path="/edit-employee/:id" element={<EmpCompo />} />
           </Routes>
+          </Suspense>
         </main>
         <FooterComponent />
       </BrowserRouter>
