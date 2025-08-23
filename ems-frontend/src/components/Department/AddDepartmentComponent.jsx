@@ -37,7 +37,7 @@ function AddDepartmentComponent() {
         </button>
         <button
           type="button"
-          className="btn secondary"
+          className="btn danger"
           onClick={() => navigate(-1)}
         >
           Cancel
