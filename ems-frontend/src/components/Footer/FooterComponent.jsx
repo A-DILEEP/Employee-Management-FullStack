@@ -1,19 +1,20 @@
 import React from "react";
 import "./Footer.css";
+import { PiGithubLogoLight } from "react-icons/pi";
 
 const FooterComponent = () => {
   return (
     <footer className="footer">
       <span>
-        Made with ❤️ on{" "}
+{/*         
         <a
           href="https://github.com/A-DILEEP"
           className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Coding
-        </a>
+          <PiGithubLogoLight style={{fontSize:"25px"}} />
+        </a> */}
       </span>
     </footer>
   );
