@@ -31,3 +31,21 @@
     cursor: pointer;
 }
 
+
+@media (max-width: 768px) {
+  .DetailsCard {    
+    width: 90%;
+    font-size: 20px;
+    
+    height: 70%;
+  }
+
+}
+@media (max-width: 1600px) {
+  .DetailsCard {    
+    width:50%;
+    font-size: 25px;
+    height: 70%;
+  }
+
+}

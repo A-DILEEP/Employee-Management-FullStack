@@ -1,6 +1,6 @@
 .container {
   max-width: 900px;
-  margin: 50px auto;
+  margin: 25px auto;
   padding: 20px;
 }
 
@@ -80,7 +80,15 @@
     padding: 8px;
   }
 }
-
+.search-box{
+  height: 28px;
+  width:69%;
+  border: 1px solid ;
+  border-radius: 10px;
+  text-align:left;
+  font-size: 15px;
+  padding-left: 10px;
+}
 @media (max-width: 480px) {
   .employee-table {
     display: block;
