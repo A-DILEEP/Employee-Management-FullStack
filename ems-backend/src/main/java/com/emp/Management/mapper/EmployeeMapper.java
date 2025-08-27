@@ -1,5 +1,6 @@
 package com.emp.Management.mapper;
 
+import com.emp.Management.dto.AddressDto;
 import com.emp.Management.dto.DepartmentDto;
 import com.emp.Management.dto.EmployeeSummaryDto;
 import com.emp.Management.dto.EmployeeDetailDto;
@@ -29,13 +30,23 @@ public class EmployeeMapper {
                     employee.getDepartment().getName()
             );
         }
-
+        
+        AddressDto addressDto=null;
+        if(employee.getAddress()!=null) {
+        	addressDto=new AddressDto(
+        			employee.getAddress().getId(),
+        			employee.getAddress().getCity(),
+        			employee.getAddress().getState()
+        			);
+        			
+        }
         return new EmployeeDetailDto(
                 employee.getId(),
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getEmail(),
-                departmentDto
+                departmentDto,
+                addressDto
         );
     }
 

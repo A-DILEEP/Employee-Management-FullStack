@@ -12,6 +12,9 @@ public class Address {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private String city;
+	private String state;
+	
 	@OneToOne(mappedBy="address")
 	private Employee employee;
 	
@@ -32,9 +35,6 @@ public class Address {
 		super();
 	}
 
-	private String city;
-	private String state;
-	
 	public Long getId() {
 		return id;
 	}
