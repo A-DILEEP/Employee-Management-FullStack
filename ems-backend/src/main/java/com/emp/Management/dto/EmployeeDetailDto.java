@@ -6,24 +6,24 @@ public class EmployeeDetailDto {
     private String lastName;
     private String email;
     private DepartmentDto department;
-    private AddressDto addressDto;
+    private AddressDto address;
     public EmployeeDetailDto() {}
 
-    public EmployeeDetailDto(Long id, String firstName, String lastName, String email, DepartmentDto department ,AddressDto addressDto) {
+    public EmployeeDetailDto(Long id, String firstName, String lastName, String email, DepartmentDto department ,AddressDto address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.department = department;
-        this.addressDto=addressDto;
+        this.address=address;
     }
     
     public AddressDto getAddressDto() {
-		return addressDto;
+		return address;
 	}
 
-	public void setAddressDto(AddressDto addressDto) {
-		this.addressDto = addressDto;
+	public void setAddressDto(AddressDto address) {
+		this.address = address;
 	}
 
 	public Long getId() {

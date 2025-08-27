@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
+import com.emp.Management.dto.DepartmentDto;
 import com.emp.Management.entity.Department;
 import com.emp.Management.repository.DepartmentRepository;
+import com.emp.Management.service.DepartmentService;
 
 @RestController
 @RequestMapping("/api/departments")
@@ -18,10 +20,12 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+    @Autowired
+    private DepartmentService departmentService;
     
     @GetMapping
-    public List<Department> getAllDepartments() {
-        return departmentRepository.findAll();
+    public List<DepartmentDto> getAllDepartments() {
+        return departmentService.getAllDepartments();
     }
 
     @PostMapping
