@@ -4,6 +4,7 @@ import com.emp.Management.dto.AddressDto;
 import com.emp.Management.dto.DepartmentDto;
 import com.emp.Management.dto.EmployeeSummaryDto;
 import com.emp.Management.dto.EmployeeDetailDto;
+import com.emp.Management.entity.Address;
 import com.emp.Management.entity.Department;
 import com.emp.Management.entity.Employee;
 
@@ -58,13 +59,16 @@ public class EmployeeMapper {
             department = new Department();
             department.setId(employeeDto.getDepartment().getId()); 
         }
-
+        Address address=new Address();
+        address.setCity(employeeDto.getAddressDto().getCity());
+        address.setState(employeeDto.getAddressDto().getState());
         return new Employee(
             employeeDto.getId(),
             employeeDto.getFirstName(),
             employeeDto.getLastName(),
             employeeDto.getEmail(),
-            department
+            department,
+            address
         );
     }
 

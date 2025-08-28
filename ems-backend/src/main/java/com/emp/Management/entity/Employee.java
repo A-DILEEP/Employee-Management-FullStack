@@ -45,13 +45,14 @@ public class Employee {
 		)
 	private List<Project> projects = new ArrayList<>();
 	
-	public Employee(Long id, String firstName, String lastName, String email, Department department) {
+	public Employee(Long id, String firstName, String lastName, String email, Department department,Address address) {
 		super();
 		Id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.department = department;
+		this.address=address;
 	}
 	public Address getAddress() {
 		return address;
