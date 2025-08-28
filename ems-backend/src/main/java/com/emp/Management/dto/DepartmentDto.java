@@ -3,6 +3,7 @@ package com.emp.Management.dto;
 public class DepartmentDto {
     private Long id;
     private String name;
+    
 
     public DepartmentDto(Long id, String name) {
         this.id = id;

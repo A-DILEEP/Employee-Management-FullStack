@@ -1,6 +1,7 @@
 package com.emp.Management.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,9 @@ public class DepartmentController {
     private DepartmentService departmentService;
     
     @GetMapping
-    public List<DepartmentDto> getAllDepartments() {
-        return departmentService.getAllDepartments();
+    public ResponseEntity<List<DepartmentDto>> getAllDepartments() {
+    	List<DepartmentDto> allDepartments=departmentService.getAllDepartments();
+    	return ResponseEntity.ok(allDepartments);
     }
 
     @PostMapping
