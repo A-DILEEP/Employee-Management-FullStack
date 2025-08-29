@@ -7,6 +7,7 @@ import com.emp.Management.entity.Department;
 
 public interface DepartmentService {
 	List<DepartmentDto> getAllDepartments();
-	Department createDepartment(Department department);
-	Department getDepartmentById(Long id);
+	Department createDepartment(DepartmentDto department);
+	DepartmentDto getDepartmentById(Long id);
+	String deleteDepartment(Long id );
 }

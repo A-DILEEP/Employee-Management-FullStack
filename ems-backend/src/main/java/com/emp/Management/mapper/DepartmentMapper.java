@@ -9,4 +9,7 @@ public class DepartmentMapper {
 				department.getName());
 	}
 	
+	public static Department maptoDepartment(DepartmentDto departmentDto) {
+		return new Department(departmentDto.getId(),departmentDto.getName());
+	}
 }

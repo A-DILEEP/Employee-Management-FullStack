@@ -1,7 +1,9 @@
 package com.emp.Management.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +33,20 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public Department createDepartment(@RequestBody Department department) {
-        return departmentRepository.save(department);
+    public ResponseEntity<Department> createDepartment(@RequestBody DepartmentDto departmentDto) {
+    	Department department=departmentService.createDepartment(departmentDto);
+    	
+        return ResponseEntity.status(HttpStatus.CREATED).body(department);
     }
     @GetMapping("/{id}")
-    public Department getDepartmentById(@PathVariable Long id) {
-        return departmentRepository.findById(id).orElse(null);
+    public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable Long id) {
+    	DepartmentDto departmentDto=departmentService.getDepartmentById(id);
+        return ResponseEntity.ok(departmentDto);
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDepartment(@PathVariable Long id ) {
+    	String value=departmentService.deleteDepartment(id);
+    	return ResponseEntity.status(HttpStatus.OK).body(value);
     }
 }
