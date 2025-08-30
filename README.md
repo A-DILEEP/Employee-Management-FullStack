@@ -8,6 +8,8 @@ This is a full-stack **Employee Management System** built using:
 - **Deployed** on:
   - Netlify (Frontend)
   - Render (Backend)
+  - Neon (Database)
+  - Docker (Backend Image)
 
 ---
 
