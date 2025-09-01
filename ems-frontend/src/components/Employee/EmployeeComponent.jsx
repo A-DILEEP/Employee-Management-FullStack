@@ -6,7 +6,6 @@ import {
   updateEmployee,
 } from "../../service/EmployeeService";
 import { getAllDepartments } from "../../service/DepartmentService";
-
 import "./Employee.css";
 
 const EmployeeComponent = () => {
@@ -27,8 +26,6 @@ const EmployeeComponent = () => {
 
   function saveOrUpdateEmployee(e) {
     e.preventDefault();
-
-    // ✅ send department object (backend expects this format)
     const employee = {
       firstName,
       lastName,
@@ -69,12 +66,10 @@ const EmployeeComponent = () => {
   function validateForm() {
     let valid = true;
     const errorCopy = { ...error };
-
     errorCopy.firstName = firstName.trim() ? "" : "First Name is Required";
     errorCopy.lastName = lastName.trim() ? "" : "Last Name is Required";
     errorCopy.email = email.trim() ? "" : "Email ID is Required";
     errorCopy.departmentId = departmentId ? "" : "Department is Required";
-
     if (
       !firstName.trim() ||
       !lastName.trim() ||

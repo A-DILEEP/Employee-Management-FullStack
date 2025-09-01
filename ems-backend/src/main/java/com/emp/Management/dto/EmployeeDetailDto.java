@@ -1,10 +1,20 @@
 package com.emp.Management.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class EmployeeDetailDto {
     private Long id;
+    
+    @NotBlank(message="firstName is Required")
     private String firstName;
+    @NotBlank(message="lastName is Required")
     private String lastName;
-    private String email;
+   
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email is required")
+    private String email;    
+    
     private DepartmentDto department;
     private AddressDto address;
     public EmployeeDetailDto() {}
