@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+
 import java.util.*;
 
 @Entity
@@ -16,9 +18,8 @@ public class Project {
 	private String projectName;
 	private String projectId;
 	
-	@ManyToMany(mappedBy="projects")
+	@OneToMany(mappedBy="project")
 	private List<Employee> employees=new ArrayList<>();
-	
 	public Long getId() {
 		return id;
 	}
