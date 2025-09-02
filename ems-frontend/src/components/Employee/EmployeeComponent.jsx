@@ -134,8 +134,6 @@ const EmployeeComponent = () => {
               <span className="error-message">{error.email}</span>
             )}
           </div>
-
-          {/* ✅ Department dropdown */}
           <div className="form-group">
             <label>Department:</label>
             <select

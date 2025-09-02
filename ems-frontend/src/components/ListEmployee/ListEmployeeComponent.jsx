@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { deleteEmployee, listEmployees } from "../../service/EmployeeService";
 import { useNavigate } from "react-router-dom";
 import "./ListEmployee.css";
+import HeaderComponent from "../Header/HeaderComponent";
 
 function ListEmployeeComponent() {
   const [employee, setEmployee] = useState([]);
@@ -63,7 +64,7 @@ function ListEmployeeComponent() {
 
   return (
     <div className="container">
-      <h2 className="title">List of Employees</h2>
+      <h2 className="title">Employees List</h2>
       <button className="btn primary" onClick={addNewEmployee}>
         Add Employee
       </button>
