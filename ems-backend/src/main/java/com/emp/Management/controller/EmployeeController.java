@@ -43,7 +43,6 @@ public class EmployeeController {
         EmployeeDetailDto employeeDto = employeeService.getEmployeeById(id);
         return ResponseEntity.ok(employeeDto);
     }
-
     @GetMapping
     public ResponseEntity<List<EmployeeSummaryDto>> getAllEmployees() {
         List<EmployeeSummaryDto> employees = employeeService.getAllEmployees();
@@ -56,7 +55,6 @@ public class EmployeeController {
         EmployeeDetailDto employeeDto = employeeService.updateEmployee(id, updatedEmployee);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(employeeDto);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
