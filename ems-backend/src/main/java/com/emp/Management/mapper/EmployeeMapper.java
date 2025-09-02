@@ -53,25 +53,23 @@ public class EmployeeMapper {
 
     public static Employee mapToEmployee(EmployeeDetailDto employeeDto) {
         if (employeeDto == null) return null;
-
+        Employee employee=new Employee();
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setLastName(employeeDto.getLastName());
+        employee.setEmail(employeeDto.getEmail());
         Department department = null;
         if (employeeDto.getDepartment() != null && employeeDto.getDepartment().getId() != null) {
             department = new Department();
             department.setId(employeeDto.getDepartment().getId()); 
+            employee.setDepartment(department);
         }
-        Address address=new Address();
-        address.setCity(employeeDto.getAddressDto().getCity());
-        address.setState(employeeDto.getAddressDto().getState());
-        return new Employee(
-            employeeDto.getId(),
-            employeeDto.getFirstName(),
-            employeeDto.getLastName(),
-            employeeDto.getEmail(),
-            department,
-            address
-        );
+        if(employeeDto.getAddressDto()!=null && employeeDto.getAddressDto().getId()!=null) {        	
+        	Address address=new Address();
+        	address.setCity(employeeDto.getAddressDto().getCity());
+        	address.setState(employeeDto.getAddressDto().getState());
+        	employee.setAddress(address);
+        }
+        return employee;
     }
-
-
-
+    
 }

@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.*;
@@ -37,13 +38,13 @@ public class Employee {
 	@JoinColumn(name="address_id",referencedColumnName="id")
 	private Address address;
 	
-	@ManyToMany
+	@ManyToOne
 	@JoinTable(
 		    name = "employee_projects",
 		    joinColumns = @JoinColumn(name = "employee_id"),
 		    inverseJoinColumns = @JoinColumn(name = "project_id")
 		)
-	private List<Project> projects = new ArrayList<>();
+	private List<Project> project = new ArrayList<>();
 	
 	public Employee(Long id, String firstName, String lastName, String email, Department department,Address address) {
 		super();
@@ -104,10 +105,8 @@ public class Employee {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
-	public Employee(Long id, String firstName, String lastName, String email, Department department, Address address,
+	public Employee(String firstName, String lastName, String email, Department department, Address address,
 			List<Project> projects) {
-		super();
-		Id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
