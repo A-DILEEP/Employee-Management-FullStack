@@ -44,7 +44,7 @@ public class Employee {
 		    joinColumns = @JoinColumn(name = "employee_id"),
 		    inverseJoinColumns = @JoinColumn(name = "project_id")
 		)
-	private List<Project> project = new ArrayList<>();
+	private List<Project> projects = new ArrayList<>();
 	
 	public Employee(Long id, String firstName, String lastName, String email, Department department,Address address) {
 		super();
