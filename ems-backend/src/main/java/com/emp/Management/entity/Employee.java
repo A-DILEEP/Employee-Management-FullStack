@@ -36,28 +36,9 @@ public class Employee {
 	private Address address;
 	
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinTable(
-		    name = "employee_projects",
-		    joinColumns = @JoinColumn(name = "employee_id"),
-		    inverseJoinColumns = @JoinColumn(name = "project_id")
-		)
-	private List<Project> projects = new ArrayList<>();
-	
-	public Employee(Long id, String firstName, String lastName, String email, Department department,Address address) {
-		super();
-		Id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.department = department;
-		this.address=address;
-	}
-=======
     @JoinColumn(name = "project_id")
     private Project project;
 
->>>>>>> b74ce051e0de070fa3e78de3acaa632c9b21a732
 	public Address getAddress() {
 		return address;
 	}
