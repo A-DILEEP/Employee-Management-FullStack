@@ -9,3 +9,7 @@ export const getAllDepartments = () => {
 export const addDepartment = (department) => {
   return axios.post(API_BASE_URL, department);
 };
+
+export const deleteDepartment=(deptId)=>{
+  return axios.delete(API_BASE_URL+"/"+deptId);
+}

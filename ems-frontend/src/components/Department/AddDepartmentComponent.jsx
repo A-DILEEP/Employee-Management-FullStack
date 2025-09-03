@@ -9,10 +9,8 @@ function AddDepartmentComponent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const department = { name }; 
-    console.log("Creating department:", department);
     addDepartment(department)
       .then((res) => {
-        console.log("Department created:", res.data);
         navigate("/employee"); 
       })
       .catch((err) => console.error("Error adding department:", err));

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmployee } from "../../service/EmployeeService";
 import "./DetailEmployee.css";
+import img from '../../assests/defaultImg.jpg'
 function DetailEmployee() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -24,6 +25,9 @@ function DetailEmployee() {
   return (
     <div className="DetailsEmp">
       <div className="DetailsCard">
+        <div className="dc">
+          <img src={img} alt="profile" />
+        </div>
         <span className="te">
           <p>First Name : {firstName}</p>
         </span>

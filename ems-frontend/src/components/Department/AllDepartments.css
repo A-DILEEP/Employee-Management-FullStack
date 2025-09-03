@@ -1,0 +1,29 @@
+.AllDepartments {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.Department-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.Department-table th,
+.Department-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.Department-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+.Department-table tr:hover {
+  background-color: #e6f7ff;
+}
+
+.Department-table td[colspan="5"] {
+  font-style: italic;
+  color: #888;
+}
