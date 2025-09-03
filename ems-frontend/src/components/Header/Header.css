@@ -1,40 +1,58 @@
 .header {
-  background-color: #000000;
-  color: white;
-  text-align: left;
-  position: sticky;
-  text-align:left;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   position: sticky;
   top: 0;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: row;
-  gap:70%;
-  align-items: center;
+  z-index: 1000;
 }
-.header-buttons button{
-  background-color: #000000;
-  border-style:none;
-  color: #fff;
-  font-size: 15px;
+.header-container {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 .header-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.header-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 3px 10px rgba(255, 255, 255, 0.5);
+}
+.header-buttons button {
+  background: #fff;
+  color: #2563eb;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-@media (max-width: 768px) {
-  .header-title {
-    font-size: 20px;
-  }
+
+.header-buttons button:hover {
+  background: #f3f4f6;
+  color: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .header {
-    width: 100%;
+    flex-direction: column;
+    padding: 14px 20px;
+    text-align: center;
   }
-  .header-title {
-    font-size: 18px;
+
+  .header-buttons {
+    margin-top: 12px;
   }
 }

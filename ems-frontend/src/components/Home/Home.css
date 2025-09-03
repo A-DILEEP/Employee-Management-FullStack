@@ -1,62 +1,57 @@
-.home {
+.home-page {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 90vh;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px;
 }
-
-.card {
+.home-card {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+.home-row {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.home-btn-wrap {
+  margin: 12px;
+}
+.home-btn {
+  background-color: #000;
   color: #fff;
-  width: 30%;
-  height: 35%;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+  min-width: 200px;
+}
+.home-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
 }
 
-.ct {
-  display: flex;
-  flex-direction: row;
-  height: 50%;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
+.home-btn:active {
+  transform: scale(0.97);
 }
+@media (max-width: 768px) {
+  .home-card {
+    padding: 25px 20px;
+  }
 
-.cb {
-  display: flex;
-  flex-direction: row;
-  height: 50%;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
-}
-.cb div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ct div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ctdiv button{
-    border: none;
-    color:#fff;
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    border-radius: 20px;
-    margin-left: 10px;
-    font-size: 15px;
-}
-
-button:hover{
-    background-color: #252525;
-    box-shadow: 1px 1px 5px 1px #252525;
+  .home-btn {
+    min-width: 100%;
+    margin: 8px 0;
+  }
 }
