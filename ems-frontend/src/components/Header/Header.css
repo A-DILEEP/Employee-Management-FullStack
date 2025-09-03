@@ -1,28 +1,40 @@
 .header {
-  background-color: #222;
+  background-color: #000000;
   color: white;
+  text-align: left;
+  position: sticky;
   text-align:left;
   position: sticky;
   width: 100%;
 
   top: 0;
-  width: 100vw;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+  gap:70%;
+  align-items: center;
 }
-
+.header-buttons button{
+  background-color: #000000;
+  border-style:none;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
 .header-title {
   font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
   margin-left: 20px;
 }
-
 @media (max-width: 768px) {
   .header-title {
     font-size: 20px;
   }
 }
 @media (max-width: 480px) {
-  .header{
-    width: 100vw;
+  .header {
+    width: 100%;
   }
   .header-title {
     font-size: 18px;

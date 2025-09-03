@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmployee } from "../../service/EmployeeService";
-import "./DetailEmployee.css"
+import "./DetailEmployee.css";
 function DetailEmployee() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [department, setDepartment] = useState("");
   const { id } = useParams();
-  const navigate=useNavigate();
   useEffect(() => {
     if (id) {
       getEmployee(id)
@@ -22,9 +21,6 @@ function DetailEmployee() {
     }
   }, [id]);
 
-  const handle=()=>{
-    navigate("/");
-  }
   return (
     <div className="DetailsEmp">
       <div className="DetailsCard">
@@ -40,11 +36,6 @@ function DetailEmployee() {
         <span className="te">
           <p>Department : {department}</p>
         </span>
-      </div>
-      <div className="navi">
-        <button onClick={handle}>
-          Home
-        </button>
       </div>
     </div>
   );

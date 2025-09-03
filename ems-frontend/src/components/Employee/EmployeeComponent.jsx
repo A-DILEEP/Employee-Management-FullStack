@@ -107,7 +107,6 @@ const EmployeeComponent = () => {
               <span className="error-message">{error.firstName}</span>
             )}
           </div>
-
           <div className="form-group">
             <label>Last Name:</label>
             <input
@@ -156,12 +155,6 @@ const EmployeeComponent = () => {
         </form>
 
         <div className="form-buttons">
-          <button
-            className="btn btn-home"
-            onClick={() => navigator("/employee")}
-          >
-            Home
-          </button>
           <button className="btn btn-save" onClick={saveOrUpdateEmployee}>
             Save Employee
           </button>

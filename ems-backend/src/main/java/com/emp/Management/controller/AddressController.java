@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.emp.Management.entity.Address;
 import com.emp.Management.service.AddressService;
-
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
@@ -30,7 +29,6 @@ public class AddressController {
 		
 		return ResponseEntity.ok(myList);
 	}
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<Address>getAddressById(@PathVariable Long id){
 		Address address=addressService.getAddressById(id);
@@ -49,7 +47,6 @@ public class AddressController {
 		
 		return ResponseEntity.ok(address);
 	}
-	
 	@DeleteMapping("/{id}")
 	public void deleteAddress(@PathVariable Long id){
 		addressService.deleteAddress(id);

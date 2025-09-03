@@ -8,9 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.*;
@@ -33,12 +31,12 @@ public class Employee {
 	@JoinColumn(name="department_id")
 	@JsonBackReference   
 	private Department department;
-	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="address_id",referencedColumnName="id")
 	private Address address;
 	
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinTable(
 		    name = "employee_projects",
 		    joinColumns = @JoinColumn(name = "employee_id"),
@@ -55,6 +53,11 @@ public class Employee {
 		this.department = department;
 		this.address=address;
 	}
+=======
+    @JoinColumn(name = "project_id")
+    private Project project;
+
+>>>>>>> b74ce051e0de070fa3e78de3acaa632c9b21a732
 	public Address getAddress() {
 		return address;
 	}
@@ -70,7 +73,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", department=" + department + ", address=" + address + ", projects=" + projects + "]";
+				+ ", department=" + department + ", address=" + address + ", projects=" + project + "]";
 	}
 	public Employee() {
 		super();
@@ -99,20 +102,20 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<Project> getProjects() {
-		return projects;
+	public Project getProjects() {
+		return project;
 	}
-	public void setProjects(List<Project> projects) {
-		this.projects = projects;
+	public void setProjects(Project project) {
+		this.project = project;
 	}
 	public Employee(String firstName, String lastName, String email, Department department, Address address,
-			List<Project> projects) {
+			Project project) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.department = department;
 		this.address = address;
-		this.projects = projects;
+		this.project = project;
 	}
 	
 }
