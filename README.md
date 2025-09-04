@@ -1,69 +1,73 @@
-# 🧑‍💼 Employee Management FullStack Website
+# 🏢 OfficeAxis – Employee Management FullStack Website
 
-This is a full-stack **Employee Management System** built using:
+**OfficeAxis** is a full-stack **Employee Management System** that helps manage employees and departments with a clean and responsive UI.
 
-- **React.js** for frontend (Vite)
-- **Spring Boot** for backend (RESTful API)
-- **PostgreSQL** for the database (Neon.tech)
-- **Deployed** on:
-  - Netlify (Frontend)
-  - Render (Backend)
-  - Neon (Database)
-  - Docker (Backend Image)
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React.js (Vite)  
+- **Backend**: Spring Boot (RESTful API)  
+- **Database**: PostgreSQL (Neon.tech)  
+- **Deployment**:  
+  - Netlify (Frontend)  
+  - Render (Backend)  
+  - Neon (Database)  
+  - Docker (Backend Image)  
 
 ---
 
 ## 📸 Features
 
-- ✅ Add a new employee
-- ✅ Add a new Departments
-- ✅ View all employees
-- ✅ Update employee information
-- ✅ Add department to the employee 
-- ✅ Delete an employee
-- ✅ Clean UI with responsive design
+- ✅ Add a new employee  
+- ✅ Add new departments  
+- ✅ View all employees  
+- ✅ Update employee information  
+- ✅ Assign department to employee  
+- ✅ Delete an employee  
+- ✅ Clean UI with responsive design  
 
 ---
 
 ## 📁 Project Structure
 
-📦 employee-management-fullstack<br>
-***├── backend (Spring Boot App)***<br>
-│ ├── src/main/java/com/emp/Management<br>
-│ │  ├── controller/<br>
-│ │  ├── dto/<br>
-│ │  ├── entity/<br>
-│ │  ├── mappers/<br>
-│ │  ├── repository/<br>
-│ │  ├── service/<br>
-│ │  ├── serviceImpl/<br>
-│ │  ├── serviceImpl/<br>
-│ └── .env (Db url,Db username,Db password,Frontend url)<br>
+📦 **officeaxis**  
+***├── backend (Spring Boot App)***  
+│ ├── src/main/java/com/officeaxis<br>
+│ │ ├── controller/<br>
+│ │ ├── dto/<br>
+│ │ ├── entity/<br>
+│ │ ├── mapper/<br>
+│ │ ├── repository/<br>
+│ │ ├── service/<br>
+│ │ ├── service/impl/<br>
+│ └── .env (Db URL, username, password, frontend URL)<br>
 
-***├── frontend (React + Vite App)***<br>
+***├── frontend (React + Vite App)***  
 │ ├── src/<br>
 │ │ ├── components/<br>
 │ │ ├── containers/<br>
 │ │ ├── assets/<br>
 │ │ ├── services/<br>
 │ │ ├── pages/<br>
-│ └── .env (VITE_API_BASE_URL)<br>
+│ └── .env (`VITE_API_BASE_URL`)<br>
+
+---
 
 ## ⚙️ Backend Setup (Spring Boot)
 
 ### Prerequisites
-- Java 17 or 21
-- Maven
-- PostgreSQL
+- Java 17 or 21  
+- Maven  
+- PostgreSQL  
 
 ### Steps to Run
 
 ```bash
-cd ems-backend
-mvnw install 
+cd backend
+./mvnw install 
 ./mvnw spring-boot:run
 ```
-
 ## ⚙️ FrontEnd Setup (React + Vite App)
 
 ### Prerequisites
