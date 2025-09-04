@@ -7,33 +7,52 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(EmployeeController.class)
 class EmployeeControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
+
     @SuppressWarnings("removal")
 	@MockBean
     private EmployeeService employeeService;
-
+    
     @Test
-    void testGetEmployeeById_Success() throws Exception {
-        EmployeeDetailDto dto = new EmployeeDetailDto();
-        dto.setId(1L);
-        dto.setFirstName("dileep");
-        dto.setLastName("reddy");
-        dto.setEmail("dileep@example.com");
-        Mockito.when(employeeService.getEmployeeById(1L)).thenReturn(dto);
+    void createEmployee_success() throws Exception {
+        EmployeeDetailDto mockEmployee = new EmployeeDetailDto(1L, "John", "Doe", "john@example.com", null, null);
+        Mockito.when(employeeService.createEmployee(any(EmployeeDetailDto.class)))
+                .thenReturn(mockEmployee);
+        String employeeJson = """
+            {
+              "firstName": "John",
+              "lastName": "Doe",
+              "email": "john@example.com"
+            }
+            """;
+        mockMvc.perform(post("/api/employee")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(employeeJson))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.firstName").value("John"))
+                .andExpect(jsonPath("$.lastName").value("Doe"))
+                .andExpect(jsonPath("$.email").value("john@example.com"));
+    }
+    @Test
+    void getEmployeeById_success() throws Exception {
+        EmployeeDetailDto mockEmployee = new EmployeeDetailDto(1L, "Jane", "Smith", "jane@example.com", null, null);
+        Mockito.when(employeeService.getEmployeeById(eq(1L)))
+                .thenReturn(mockEmployee);
         mockMvc.perform(get("/api/employee/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1L))
-                .andExpect(jsonPath("$.firstName").value("dileep"))
-                .andExpect(jsonPath(".lastName").value("reddy"))
-                .andExpect(jsonPath("$.email").value("dileep@example.com"));
+                .andExpect(jsonPath("$.firstName").value("Jane"))
+                .andExpect(jsonPath("$.lastName").value("Smith"))
+                .andExpect(jsonPath("$.email").value("jane@example.com"));
     }
 }
-

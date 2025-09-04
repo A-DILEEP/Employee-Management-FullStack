@@ -9,10 +9,8 @@ import com.emp.Management.entity.Department;
 import com.emp.Management.entity.Employee;
 
 public class EmployeeMapper {
-
-    public static EmployeeSummaryDto mapToEmployeeSummaryDto(Employee employee) {
+    public static EmployeeSummaryDto toSummaryDto(Employee employee) {
         if (employee == null) return null;
-
         return new EmployeeSummaryDto(
                 employee.getId(),
                 employee.getFirstName(),
@@ -20,27 +18,10 @@ public class EmployeeMapper {
                 employee.getEmail()
         );
     }
-
-    public static EmployeeDetailDto mapToEmployeeDetailDto(Employee employee) {
+    public static EmployeeDetailDto toDetailDto(Employee employee) {
         if (employee == null) return null;
-
-        DepartmentDto departmentDto = null;
-        if (employee.getDepartment() != null) {
-            departmentDto = new DepartmentDto(
-                    employee.getDepartment().getId(),
-                    employee.getDepartment().getName()
-            );
-        }
-        
-        AddressDto addressDto=null;
-        if(employee.getAddress()!=null) {
-        	addressDto=new AddressDto(
-        			employee.getAddress().getId(),
-        			employee.getAddress().getCity(),
-        			employee.getAddress().getState()
-        			);
-        			
-        }
+        DepartmentDto departmentDto = toDepartmentDto(employee.getDepartment());
+        AddressDto addressDto = toAddressDto(employee.getAddress());
         return new EmployeeDetailDto(
                 employee.getId(),
                 employee.getFirstName(),
@@ -50,26 +31,39 @@ public class EmployeeMapper {
                 addressDto
         );
     }
-
-    public static Employee mapToEmployee(EmployeeDetailDto employeeDto) {
-        if (employeeDto == null) return null;
-        Employee employee=new Employee();
-        employee.setFirstName(employeeDto.getFirstName());
-        employee.setLastName(employeeDto.getLastName());
-        employee.setEmail(employeeDto.getEmail());
-        Department department = null;
-        if (employeeDto.getDepartment() != null && employeeDto.getDepartment().getId() != null) {
-            department = new Department();
-            department.setId(employeeDto.getDepartment().getId()); 
-            employee.setDepartment(department);
-        }
-        if(employeeDto.getAddressDto()!=null && employeeDto.getAddressDto().getId()!=null) {        	
-        	Address address=new Address();
-        	address.setCity(employeeDto.getAddressDto().getCity());
-        	address.setState(employeeDto.getAddressDto().getState());
-        	employee.setAddress(address);
-        }
+    public static Employee toEntity(EmployeeDetailDto dto) {
+        if (dto == null) return null;
+        Employee employee = new Employee();
+        employee.setId(dto.getId());
+        employee.setFirstName(dto.getFirstName());
+        employee.setLastName(dto.getLastName());
+        employee.setEmail(dto.getEmail());
+        employee.setDepartment(toDepartment(dto.getDepartment()));
+        employee.setAddress(toAddress(dto.getAddressDto()));
         return employee;
     }
-    
+    public static DepartmentDto toDepartmentDto(Department department) {
+        if (department == null) return null;
+        return new DepartmentDto(department.getId(), department.getName());
+    }
+
+    public static Department toDepartment(DepartmentDto dto) {
+        if (dto == null || dto.getId() == null) return null;
+        Department department = new Department();
+        department.setId(dto.getId());
+        department.setName(dto.getName());
+        return department;
+    }
+    public static AddressDto toAddressDto(Address address) {
+        if (address == null) return null;
+        return new AddressDto(address.getId(), address.getCity(), address.getState());
+    }
+    public static Address toAddress(AddressDto dto) {
+        if (dto == null) return null;
+        Address address = new Address();
+        address.setId(dto.getId());
+        address.setCity(dto.getCity());
+        address.setState(dto.getState());
+        return address;
+    }
 }

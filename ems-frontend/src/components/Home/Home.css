@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
   padding: 20px;
+  bottom: 0;
 }
 .home-card {
   background: #ffffff;

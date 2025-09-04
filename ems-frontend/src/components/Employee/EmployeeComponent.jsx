@@ -10,18 +10,21 @@ import "./Employee.css";
 
 const EmployeeComponent = () => {
   const navigator = useNavigate();
+  const { id } = useParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [departmentId, setDepartmentId] = useState("");
   const [departments, setDepartments] = useState([]);
-  const { id } = useParams();
-
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
     email: "",
     departmentId: "",
+    city: "",
+    state: "",
   });
 
   function saveOrUpdateEmployee(e) {
@@ -31,8 +34,11 @@ const EmployeeComponent = () => {
       lastName,
       email,
       department: { id: departmentId },
+      addressDto: {
+        city,
+        state,
+      },
     };
-
     if (validateForm()) {
       if (id) {
         updateEmployee(id, employee)
@@ -45,12 +51,10 @@ const EmployeeComponent = () => {
       }
     }
   }
-
   useEffect(() => {
     getAllDepartments()
       .then((res) => setDepartments(res.data))
       .catch((err) => console.log(err));
-
     if (id) {
       getEmployee(id)
         .then((res) => {
@@ -58,11 +62,12 @@ const EmployeeComponent = () => {
           setLastName(res.data.lastName);
           setEmail(res.data.email);
           setDepartmentId(res.data.department?.id || "");
+          setCity(res.data.addressDto?.city || "");
+          setState(res.data.addressDto?.state || "");
         })
         .catch((e) => console.log(e));
     }
   }, [id]);
-
   function validateForm() {
     let valid = true;
     const errorCopy = { ...error };
@@ -70,19 +75,21 @@ const EmployeeComponent = () => {
     errorCopy.lastName = lastName.trim() ? "" : "Last Name is Required";
     errorCopy.email = email.trim() ? "" : "Email ID is Required";
     errorCopy.departmentId = departmentId ? "" : "Department is Required";
+    errorCopy.city = city.trim() ? "" : "City is Required";
+    errorCopy.state = state.trim() ? "" : "State is Required";
     if (
       !firstName.trim() ||
       !lastName.trim() ||
       !email.trim() ||
-      !departmentId
+      !departmentId ||
+      !city.trim() ||
+      !state.trim()
     ) {
       valid = false;
     }
-
     setError(errorCopy);
     return valid;
   }
-
   function pageTitle() {
     return (
       <h2 className="form-title">{id ? "Update Employee" : "Add Employee"}</h2>
@@ -120,7 +127,6 @@ const EmployeeComponent = () => {
               <span className="error-message">{error.lastName}</span>
             )}
           </div>
-
           <div className="form-group">
             <label>Email Id:</label>
             <input
@@ -152,8 +158,31 @@ const EmployeeComponent = () => {
               <span className="error-message">{error.departmentId}</span>
             )}
           </div>
+          <div className="form-group">
+            <label>City:</label>
+            <input
+              type="text"
+              placeholder="Enter City"
+              value={city}
+              className={error.city ? "input-error" : ""}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            {error.city && <span className="error-message">{error.city}</span>}
+          </div>
+          <div className="form-group">
+            <label>State:</label>
+            <input
+              type="text"
+              placeholder="Enter State"
+              value={state}
+              className={error.state ? "input-error" : ""}
+              onChange={(e) => setState(e.target.value)}
+            />
+            {error.state && (
+              <span className="error-message">{error.state}</span>
+            )}
+          </div>
         </form>
-
         <div className="form-buttons">
           <button className="btn btn-save" onClick={saveOrUpdateEmployee}>
             Save Employee

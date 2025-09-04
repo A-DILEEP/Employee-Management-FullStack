@@ -2,17 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  background: #f3f4f6;
+  background: #f9fafb;
   padding: 20px;
 }
 .employee-form-card {
   background: #fff;
-  padding: 30px 40px;
+  padding: 35px 40px;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 500px;
+  max-width: 350px;
 }
 .form-title {
   text-align: center;
@@ -20,6 +19,7 @@
   font-weight: 600;
   margin-bottom: 25px;
   color: #2563eb;
+  letter-spacing: -0.3px;
 }
 .form-group {
   display: flex;
@@ -39,11 +39,12 @@
   border-radius: 8px;
   font-size: 14px;
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 .form-group input:focus,
 .form-group select:focus {
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 .input-error {
   border-color: #dc2626 !important;
@@ -55,9 +56,8 @@
 }
 .form-buttons {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 22px;
 }
-
 .btn {
   padding: 12px 20px;
   border: none;
@@ -65,7 +65,7 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 15px;
-  transition: background 0.2s;
+  transition: all 0.25s ease-in-out;
 }
 .btn-save {
   background: #2563eb;
@@ -73,9 +73,22 @@
 }
 .btn-save:hover {
   background: #1e40af;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-@media (max-width: 600px) {
+.address-row {
+  display: flex;
+  gap: 16px;
+}
+.address-row .form-group {
+  flex: 1;
+}
+@media (max-width: 768px) {
   .employee-form-card {
     padding: 20px;
+  }
+  .address-row {
+    flex-direction: column;
+    gap: 0;
   }
 }

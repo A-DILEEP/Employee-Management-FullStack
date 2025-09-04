@@ -1,4 +1,6 @@
 package com.emp.Management.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Address {
 	private String state;
 	
 	@OneToOne(mappedBy="address")
+	@JsonManagedReference
 	private Employee employee;
 	
 	public Address(Long id, String city, String state, Employee employee) {
