@@ -28,6 +28,9 @@
 - ✅ Clean UI with responsive design  
 
 ---
+## 📊 ERD (Entity Relationship Diagram)
+
+![OfficeAxis ERD](./docs/ERD.png)
 
 ## 📁 Project Structure
 
