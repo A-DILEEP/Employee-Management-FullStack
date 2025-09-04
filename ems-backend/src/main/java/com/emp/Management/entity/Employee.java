@@ -82,10 +82,10 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Project getProjects() {
+	public Project getProject() {
 		return project;
 	}
-	public void setProjects(Project project) {
+	public void setProject(Project project) {
 		this.project = project;
 	}
 	public Employee(String firstName, String lastName, String email, Department department, Address address,

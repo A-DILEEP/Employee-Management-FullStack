@@ -1,13 +1,6 @@
 package com.emp.Management.mapper;
-
-import com.emp.Management.dto.AddressDto;
-import com.emp.Management.dto.DepartmentDto;
-import com.emp.Management.dto.EmployeeSummaryDto;
-import com.emp.Management.dto.EmployeeDetailDto;
-import com.emp.Management.entity.Address;
-import com.emp.Management.entity.Department;
-import com.emp.Management.entity.Employee;
-
+import com.emp.Management.dto.*;
+import com.emp.Management.entity.*;
 public class EmployeeMapper {
     public static EmployeeSummaryDto toSummaryDto(Employee employee) {
         if (employee == null) return null;
@@ -22,13 +15,15 @@ public class EmployeeMapper {
         if (employee == null) return null;
         DepartmentDto departmentDto = toDepartmentDto(employee.getDepartment());
         AddressDto addressDto = toAddressDto(employee.getAddress());
+        ProjectDto projectDto = ProjectMapper.toDto(employee.getProject());
         return new EmployeeDetailDto(
                 employee.getId(),
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getEmail(),
                 departmentDto,
-                addressDto
+                addressDto,
+                projectDto
         );
     }
     public static Employee toEntity(EmployeeDetailDto dto) {
@@ -40,13 +35,13 @@ public class EmployeeMapper {
         employee.setEmail(dto.getEmail());
         employee.setDepartment(toDepartment(dto.getDepartment()));
         employee.setAddress(toAddress(dto.getAddressDto()));
+        employee.setProject(ProjectMapper.toEntity(dto.getProject()));
         return employee;
     }
     public static DepartmentDto toDepartmentDto(Department department) {
         if (department == null) return null;
         return new DepartmentDto(department.getId(), department.getName());
     }
-
     public static Department toDepartment(DepartmentDto dto) {
         if (dto == null || dto.getId() == null) return null;
         Department department = new Department();

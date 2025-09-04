@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL + "/api/address";
 
-export const listEmployees = () => {
+export const listAddress = () => {
   return axios.get(API_BASE_URL);
 };
 
